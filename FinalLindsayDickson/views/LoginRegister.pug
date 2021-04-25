@@ -1,0 +1,32 @@
+doctype html
+head
+    //- link(rel='stylesheet' href='css/style.css')
+    link(rel='stylesheet' href='css/forms.css')
+    include partials/navHeader
+body
+.main-forum
+  .form-box
+    .button-box
+      #btn
+      button.toggle-btn(type='button', onclick='login()') Login
+      button.toggle-btn(type='button', onclick='register()') Register
+    form(action= "/Login" method="POST")#login.input-group
+      input.input-field(type='text', placeholder='Username', name="username", required='')
+      br
+      input.input-field(type='password', placeholder='Password', name="password", required='')
+      br
+      br
+      br
+      button.submit-btn(type='submit') Login
+    //-   button#f-btn(onclick='togglePopup()') Forgot Password
+    form(action="/users/" method="POST")#register.input-group
+      input.input-field(type='text', placeholder='Username', name="username", required='')
+      br
+      input.input-field(type='password', placeholder='Password', name="password", required='')
+      input.chech-box(type='checkbox')
+      a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ", style="color:grey; font-size:10px") Agree to terms &amp; conditions
+      //- span Agree to terms &amp; conditions
+      button.submit-btn(type='submit') Register
+
+script(src='js/core.js')
+

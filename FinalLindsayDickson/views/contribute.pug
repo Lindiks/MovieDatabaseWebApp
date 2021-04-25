@@ -1,0 +1,62 @@
+doctype html
+head
+    link(rel='stylesheet' href='css/forms.css')
+    link(rel='stylesheet' href='css/test.css')
+    
+    include partials/navHeader
+body
+.main-forum
+    .form-box
+        .button-box
+            #btn
+            button.toggle-btn(type='button', onclick='login()') Movie
+            button.toggle-btn(type='button', onclick='register()') Person
+        form(name=mCreate action='/movies/' method="POST")#login.input-group
+            input.input-field(type='text', placeholder='Title', name="title", required='')
+            input.input-field(type='text', placeholder='Release year', name="year", required='')
+            input.input-field(type='text', placeholder='Runtime', name="runtime", required='')
+            br
+            input.input-field(type='text', placeholder='Genre', name="genreINPUT" id="gInput" list="genresList" onblur="addAnotherGenre()")
+            datalist(id="genresList")
+            #GenreAdd 
+            .listing 
+                ul(id="genreList")  
+
+            input.input-field(type="text" name="actorINPUT" id="aInput" placeholder="Add Actor" list="pplList" onblur="addAnotherAct()")
+            datalist(id="pplList")    
+            #ActorsAdd
+            .listing
+                ul(id="actorList")
+            input.input-field(type='text', placeholder='Director', name="directorINPUT", id="dInput", list="pplList", onblur="addAnotherDir()")
+            #DirectorsAdd
+            .listing 
+                ul(id="directorList")
+
+            input.input-field(placeholder='Writer', name="writerINPUT", id="wInput", list="pplList" onblur="addAnotherWri()")
+            #WritersAdd
+            .listing 
+                ul(id="writerList")
+            input.input-field(type='text', placeholder='Plot', name="plot", required='')
+            //- EXTRA ATTRIBUTES 
+            input.input-field(type='text', placeholder='Release date', name="released")
+            input.input-field(type='text', placeholder='Awards', name="awards")
+            input.input-field(type='text', placeholder='Poster URL', name="poster")
+
+            //- look into animated search and change the icon to say "Add another Actor"
+            br
+            //- span Agree to terms &amp; conditions
+            button.submit-btn(type='submit' id="moveCreateBtn") Create Movie
+        form(action="/people/" method="POST")#register.input-group
+            input.input-field(type='text', placeholder='Name', name="name", required='')
+            //- #ActorsAdd
+            //-   input.more-input(type="text" name="actor" placeholder="Add Actor" onchange="addAnother()")
+            //-   br
+            br
+            button.submit-btn(type='submit') Create Person
+
+
+
+script(src='js/core.js')
+script(src='js/formsDatalist.js')
+
+

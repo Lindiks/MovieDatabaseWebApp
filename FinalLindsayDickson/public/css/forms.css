@@ -1,0 +1,207 @@
+
+/* Login/Register ____________________________________________________________________________________*/
+
+.main-forum {
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+
+.form-box {
+	width: 380px;
+	height: 480px;
+	position: relative;
+	margin: 2.5% auto;
+	background: #fff;
+	padding: 5px;
+	overflow: hidden;
+
+}
+
+.button-box {
+	width: 234px;
+	margin: 35px auto;
+	position: relative;
+	box-shadow: 0 0 20px 9px #e8e9eb;
+	border-radius: 30px;
+}
+
+.toggle-btn {
+	padding: 10px 30px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+	
+}
+
+#btn {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 125px;
+	height: 100%;
+	color: #c5c6c7; 
+	background: linear-gradient(to right,#7ba8a5, #c5c6c7 );
+	border-radius: 30px;
+	transition: .5s;
+}
+
+#f-btn {
+/*	top: 425px;
+	left: 135px;*/
+	top : 275px;
+	left : 90px;
+	position: absolute;
+	width : 110px;
+	background: transparent;
+	border: none;
+	cursor : pointer;
+	color: #c5c6c7; 
+	
+}
+
+.input-group {
+	top: 150px;
+	position: absolute;
+	width: 280px;
+	transition: .5s;
+
+}
+
+.input-field{ 
+	width: 100%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 1px solid #999;
+	outline: none;
+	background: transparent;
+
+}
+
+.submit-btn {
+	width: 85%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display:block;
+	margin: auto;
+	background: linear-gradient(to right,#7ba8a5, #c5c6c7 );
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+
+}
+
+.chech-box {
+	margin: 30px 10px 30px 0;
+
+}
+span{
+	color: #777;
+	font-size: 12px;
+	bottom: 68px;
+	position: absolute;
+}
+
+#login{
+	left: 50px;
+}
+
+#register {
+	left: 450px;
+}
+
+
+/* modal stuff*/
+.popup .overlay {
+	position : fixed;
+	top: 0px;
+	left:0px;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.7);
+	z-index: 1;
+	display:none;
+
+}
+
+.popup .content {
+	position: absolute;
+	top: 290px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+
+	width: 580px;
+	height: 480px;
+	margin: 6% auto;
+	background: #fff;
+	padding: 5px;
+	overflow: hidden;
+	display:none;
+
+}
+
+#forgot-p{
+	left: 140px;
+
+
+}
+
+.popup .close-btn {
+	cursor: pointer;
+	position: absolute;
+	right:20px;
+	top:20px;
+	width:30px;
+	height: 30px;
+	background: #222;
+	color: #fff;
+	font-size: 25px;
+	font-weight: 600;
+	line-height: 30px;
+	text-align:center;
+	border-radius:50%;
+
+}
+
+.popup.active .overlay {
+	display:block;
+}
+.popup.active .content{
+
+	transition:all 300ms ease-in-out;
+	display:block;
+/*	transform: translate(-50%, -50%) scale(0);*/
+}
+
+
+
+.form-box:hover, .form-box:active, body.form-box:focus {
+    overflow-y: auto;
+}
+  
+  
+.form-box::-webkit-scrollbar {
+  width: 7px;
+  height: 15px
+  }
+.form-box::-webkit-scrollbar-track {
+  background: none;
+  }
+.form-box::-webkit-scrollbar-thumb {
+  
+  background-color: rgba(185, 185, 185, 0.281) ;
+  border-radius: 6px;
+  border: 1px solid  rgba(185, 185, 185, 0.2.81);
+  }

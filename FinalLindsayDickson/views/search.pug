@@ -1,0 +1,58 @@
+doctype html
+head
+    link(rel='stylesheet' href='../../css/movie.css')
+    include partials/navHeader
+body
+
+    h1 Search
+    -var page = 1
+    -var x = 0
+    //- - var genres
+    form#searchForm(action="/movies/search/", method="GET")
+
+        input(type='text', placeholder='title', name="title")
+        //- Drop down menu for Genre
+        //- input(type='text', placeholder='Genre', name="gnre")
+        select(name="genre")
+            option(disabled selected value="")
+            each genre in genres
+                option(value=genre) #{genre}
+                
+        input(type='text', placeholder='Actor', name = "actor")
+        input(type='text', placeholder='Director', name = "director")
+        input(type='text', placeholder='Writer', name = "writer")
+        input(type='text', value=page, name="page", hidden) 
+
+        button(type="submit") Search
+
+    br
+    br
+
+    if(results)
+        if(results.two)
+    
+            .row
+                each resultList in results.two 
+                    .column
+                        for result in resultList
+                            li.inLineElms
+                                .posterContainer
+                                    a(href='../'+result._id) 
+                                        img.crop(src=result.Poster, alt='Avatar')
+                                        .posterOverlay 
+                                            .posterText #{result.Title}
+ 
+
+
+        br      
+        -while(x < lim.All)
+            - var y = x+1
+            
+            - for(i=x; i < y; i++)
+    
+                button(onclick = "getNextPage("+x+")") #{x+1}
+                - x++
+        
+
+script(src='../../js/core.js')
+script(src='../../js/formsDatalist.js')

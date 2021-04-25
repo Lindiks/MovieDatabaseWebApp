@@ -1,0 +1,270 @@
+#movieDisplay{
+	margin: 25px;
+    float:left;
+	position: relative;
+}
+
+#mTitle {
+	font-size: 23px;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+#mPoster{
+    margin-left: 25px;
+    position: absolute;
+    z-index: 1;
+	
+
+}
+
+.rectangle {
+    margin-top: 115px;
+    height: 350px;
+    /* width: 1000px; */
+	width: fit-content;
+    background-color: rgba(185, 185, 185, 0.281);
+    border: solid;
+	border-color:  rgba(185, 185, 185, 0.664);
+    padding-right: 25px;
+
+    position:relative;
+
+   
+  }
+
+
+
+
+
+#movieInfo{
+    /* background-color: green; */
+    height: 350px;
+    margin-left: 335px;
+}
+
+
+#actorList{
+	/* position: absolute; */
+	display: inline;
+	}
+ul#actorList li::after {
+	content: ',';
+}
+	
+ul#actorList li:last-child::after{
+	content: '';
+}
+#directorList{
+	display: inline;
+}
+ul#directorList li::after {
+	content: ',';
+}
+ul#directorList li:last-child::after{
+	content: '';
+}
+
+#writerList{
+	display: inline;
+}
+ul#writerList li::after {
+	content: ',';
+}
+	
+ul#writerList li:last-child::after{
+	content: '';
+}
+
+
+
+#movieTags{
+	list-style-type: none;
+	display: inline;
+	
+}
+
+ul#movieTags li::after {
+	content: '|';
+	display: inline;
+  }
+
+ul#movieTags li:last-child::after{
+	content: '';
+}
+
+ul#genreTags li::after {
+	content: ',';
+}
+  
+ul#genreTags li:last-child::after{
+	content: '';
+}
+
+#genreTags{
+	list-style-type: none;
+	display: inline;
+	padding-left: 0px;
+}
+
+
+/* REVIEW STUFF */
+
+.makeReview{
+    /* margin-top: 115px; */
+    /* height: fit-content; */
+    /* width: 1000px; */
+	width: fit-content;
+    background-color: rgba(185, 185, 185, 0.281);
+    border: solid;
+	border-color:  rgba(185, 185, 185, 0.664);
+    padding: 10px;
+
+    position:relative;
+}
+
+.reviewSection{
+    /* border: solid; */
+    padding-left: 10px;
+}
+
+
+
+.reviewDisplay{
+    background-color: rgba(185, 185, 185, 0.281);
+    border: solid;
+	border-color:  rgba(185, 185, 185, 0.664);
+    padding-left: 5px;
+    width: 90%;
+}
+
+
+.reviewHead{
+    border:none;
+    padding-top: 1px;
+    /* display: inline-block; */
+    font-weight:400;
+}
+
+.stars{
+    position: absolute;
+    top: 0; 
+    right: 0;
+    width: 100px;
+    text-align:right;
+    font-size: 25px;
+    padding-right:25px;
+}
+
+
+.scrollBox{
+    overflow-y: hidden;
+    
+    height: 350px;
+    width: max-content;
+    padding: 0px;
+    /* background: linear-gradient(to top, rgba(150, 149, 149, 0.075), rgba(0, 0, 0, 0)); */
+}
+
+.scrollBox:hover, .scrollBox:active, .scrollBox:focus {
+    overflow-y: auto;
+  }
+
+
+.scrollBox::-webkit-scrollbar {
+  width: 7px;
+  height: 15px
+}
+.scrollBox::-webkit-scrollbar-track {
+  background: none;
+}
+.scrollBox::-webkit-scrollbar-thumb {
+
+  background-color: rgba(185, 185, 185, 0.281) ;
+  border-radius: 6px;
+  border: 1px solid  rgba(185, 185, 185, 0.2.81);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.row {
+	/* display: flex;
+	flex-wrap: wrap;*/
+	padding: 0 0px; 
+	display: inline-flex;
+	/* justify-content:stretch; */
+	align-items: baseline;
+	align-content: stretch;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+	flex: 50%;
+	padding: 0 0px;
+}
+
+/* This could potentialy cause error */
+.column img {  
+	margin-top: 8px;
+	vertical-align: middle;
+}
+  
+.crop img{
+	/* float: left; */
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+	overflow: hidden;
+}
+
+
+/* 
+.posterContainer {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+  }
+  
+  .posterImage {
+	display: block;
+	width: 50%;
+	height: auto;
+  }
+  
+  .posterOverlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: auto;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color:rgba(185, 185, 185, 0.9);
+  }
+  
+  .posterContainer:hover .posterOverlay {
+	opacity: 1;
+  }
+  
+  .posterText {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+  } */

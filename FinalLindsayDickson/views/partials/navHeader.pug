@@ -1,0 +1,28 @@
+doctype html
+head
+    link(rel='stylesheet' href='../../css/main.css')
+#nav
+  ul#navUl
+    li.drop.dropdown
+      button#moreBtn.dropbtn More Options
+      .dropdown-content
+        a(href='/') Home
+        a(href='/Search') Search
+        a(href='../Contribute') Contribute
+    li#searchBar.drop
+      //- a(href="../Search?title=") 
+      button#searchBtn(type='submit', onclick='sendSearch()') Search
+      input#searchField(type='text', placeholder='Search', name="title") 
+    li.drop.dropdown
+      button#userOptionsBtn.dropbtn User
+      #userDropContent.dropdown-content
+        // Find a better way to do this
+        #missingUser
+          a(href='../../Login') Login/Register
+          //- should put an if statement here that will check if the user is logged in or not 
+        #curUser
+          a(href='../../users/Profile') Profile
+          //- should put an if statement here that will check if the user is a contributing user
+          a(href='../../Contribute') Contribute 
+          a(href='../../Logout') Logout
+  //- script(src='js/core.js') //partials cannot have js already defined in them  

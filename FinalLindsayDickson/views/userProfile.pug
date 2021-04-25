@@ -1,0 +1,110 @@
+doctype html
+head
+    link(rel='stylesheet' href='/css/test.css')
+    link(rel='stylesheet' href='/css/movie.css')
+
+    include partials/navHeader
+body
+.wholePageContainer
+    #ProfileTag
+        .userContent    
+            h1 #{user.Username}          
+            if(user.Contributer==true)
+                -var btnVal = "Contributing user"
+            else 
+                -var btnVal = "Not a contributing user"
+            button.basicBtn(type='button', id="contributeState" onclick='ContributeStatus()') #{btnVal}
+        .smallBox
+            button(type="button" class="collapsible smallBoxBtn") Notifications
+            .collapsibleContent
+                .listing
+                    if(user.Notifications.length > 0)
+                        -var x = 0
+                        for notif in user.Notifications
+                            li 
+                            button.basicBtn(type='button' class="notifs" id=x onclick='deleteNotif(this)' value=notif) Delete 
+                            span(id=x) | #{notif} 
+                            - x++
+                    else
+                        p You have no notifications! 
+                //- make this a scroll box 
+   
+    .boxOutline
+        button(type="button" class="collapsible boxOutlineBtn") People you follow
+        .collapsibleContent
+            if(user.PeopleFollowed.length > 0)
+                .listing
+                    for person in user.PeopleFollowed  
+                        li(id = person._id)
+                            a(href="../people/" + person._id) #{person.Name} - 
+                            button.basicBtn(type='button', id = person._id, onclick='unfollowPerson(this.id)') unfollow
+            else 
+                a(href="../../Search/") Find people to follow 
+
+
+    .boxOutline
+        button(type="button" class="collapsible boxOutlineBtn") Users you follow
+        .collapsibleContent
+            
+            if(user.UsersFollowed.length > 0)
+                .listing
+                    for otherUser in user.UsersFollowed
+                        li(id = otherUser._id)
+                            a(href="/users/" + otherUser._id) #{otherUser.Username} - 
+                            button.basicBtn(type='button', id = otherUser._id, onclick='unfollowUser(this.id)') unfollow
+            else
+                p you're not following anyone!
+
+    .boxOutline 
+        button(type="button" class="collapsible boxOutlineBtn") your watchlist
+        .collapsibleContent
+            if(user.Watchlist.length > 0)
+                .listing
+                    for movie in user.Watchlist
+                        li(id = movie._id).inLineElms
+                            .posterContainer
+                                a(href="../movies/" + movie._id) 
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay 
+                                        .posterText #{movie.Title}
+                            button.basicBtn(type='button', id = movie._id onclick='removeWatchlist(this.id)')
+                                i Remove
+            else
+                p you haven't followed any movies.. 
+                a(href="../../Search/") Find movies to follow 
+    
+    .boxOutline 
+        button(type="button" class="collapsible boxOutlineBtn") Reviews you've left
+        .collapsibleContent
+            .listing
+                for review in user.Reviews 
+                    a(href="../../movies/"+review.Target)
+                        li.reviewDisplay
+                        //- .reviewHead 
+                        h4.reviewHead
+                            | #{review.Title}  - #{review.Rating} / 10 
+                            //- | #{rating.Title}
+                            span(style="float:right; padding-right:15px")
+                            -for(let i = 0; i < review.Rating; i++)
+                                | &star;
+                            br 
+                            //- a(href='../users/'+rating.Author._id)  -  #{rating.Author.Username}
+                        p #{review.Comments}
+        
+                    
+    .boxOutline 
+        button(type="button" class="collapsible boxOutlineBtn") Recommended for you
+        .collapsibleContent
+            .listing
+                if(user.Recommended)
+                    for movie in user.Recommended
+                        li.inLineElms
+                            .posterContainer
+                                a(href="../movies/" + movie._id)
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay 
+                                        .posterText #{movie.Title}
+                       
+script(src='../js/core.js')
+script(src='../js/profiles.js')
+

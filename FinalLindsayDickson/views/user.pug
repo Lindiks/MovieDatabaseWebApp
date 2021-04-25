@@ -1,0 +1,80 @@
+doctype html
+head
+    
+    link(rel='stylesheet' href='/css/test.css')
+    link(rel='stylesheet' href='/css/movie.css')
+
+    include partials/navHeader
+body
+.wholePageContainer
+    #userTag
+        .userContent
+            h1(style="font-size:50px; top:-30px; position:relative;") #{user.Username}
+
+            if(logged!=undefined)
+                if(logged==true)
+                    -var btnFlag = "unfollow"
+                else 
+                    -var btnFlag = "follow"
+            
+                button.basicBtn(type='button', id="followState" onclick='followUser()')  #{btnFlag} 
+          
+            if(user.Contributer)
+                p is a contributing user
+    
+  
+
+
+    if(user.PeopleFollowed.length > 0)
+        .boxOutline
+            button(type="button" class="collapsible boxOutlineBtn") People they follow
+            .collapsibleContent
+                .listing
+                    for person in user.PeopleFollowed  
+                        li(id = person._id)
+                            a(href="../people/" + person._id) #{person.Name} 
+    
+    if(user.UsersFollowed.length > 0)                       
+        .boxOutline          
+            button(type="button" class="collapsible boxOutlineBtn") Users they follow
+            .collapsibleContent
+                .listing
+                    for otherUser in user.UsersFollowed
+                        li(id = otherUser._id)
+                            a(href="/users/" + otherUser._id) #{otherUser.Username}
+   
+    if(user.Watchlist.length > 0) 
+        .boxOutline
+            button(type="button" class="collapsible boxOutlineBtn") Their watchlist
+            .collapsibleContent
+                .listing
+                    for movie in user.Watchlist
+                        li(id = movie._id).inLineElms
+                            .posterContainer
+                                a(href="../movies/" + movie._id)
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay 
+                                        .posterText #{movie.Title}        
+   
+   
+    if(user.Reviews.length > 0)
+        .boxOutline 
+            button(type="button" class="collapsible boxOutlineBtn") Reviews they've left
+            .collapsibleContent
+                .listing
+                    for review in user.Reviews 
+                        a(href="../../movies/"+review.Target)
+                            li.reviewDisplay
+                            //- .reviewHead 
+                            h4.reviewHead
+                                | #{review.Title}  - #{review.Rating} / 10 
+                                //- | #{rating.Title}
+                                span(style="float:right; padding-right:15px")
+                                -for(let i = 0; i < review.Rating; i++)
+                                    | &star;
+                                br 
+                                //- a(href='../users/'+rating.Author._id)  -  #{rating.Author.Username}
+                            p #{review.Comments}
+                
+
+script(src='../js/core.js')

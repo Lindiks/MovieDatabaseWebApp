@@ -1,0 +1,81 @@
+doctype html
+
+head
+    link(rel='stylesheet' href='/css/test.css')
+    link(rel='stylesheet' href='/css/movie.css')
+    include partials/navHeader
+body
+-var btnText = "follow"
+.wholePageContainer
+   
+
+    h1 #{person.Name}
+    
+    if(logged != undefined)
+        if(logged==true)
+            - btnText = "unfollow"
+        else 
+            - btnText = "follow"
+        
+        //- button.basicBtn(type='button', onclick='followPerson()') follow
+        
+        button.basicBtn(type='button', id ="followState", onclick='followPerson()') #{btnText}
+
+ 
+    if(person.Actor.length > 0)
+        .boxOutline
+            button(type="button" class="collapsible boxOutlineBtn") Actor  
+            .collapsibleContent
+                .listing
+                    for movie in person.Actor
+                        li.inLineElms
+                            .posterContainer
+                                a(href='../movies/'+movie._id)
+                                    //- img(src=movie.Poster, alt='Avatar')
+                                    //- maybe input a blank rectangle img as an alt 
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay
+                                        .posterText #{movie.Title}
+
+
+
+    if (person.Director.length > 0)
+        .boxOutline
+            button(type="button" class="collapsible boxOutlineBtn") Directed
+            .collapsibleContent
+                .listing
+                    for movie in person.Director
+                        li.inLineElms
+                            .posterContainer
+                                a(href='../movies/'+movie._id)
+                                    //- img(src=movie.Poster alt=movie.Title class='poster')
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay
+                                        .posterText #{movie.Title}
+        
+        
+    if (person.Writer.length > 0)
+        .boxOutline 
+            button(type="button" class="collapsible boxOutlineBtn") Wrote
+            .collapsibleContent 
+                .listing
+                    for movie in person.Writer
+                        li.inLineElms
+                            .posterContainer
+                                a(href='../movies/'+movie._id)
+                                    img(src=movie.Poster, alt='Avatar', style="width:auto; height:200px")
+                                    .posterOverlay 
+                                        .posterText #{movie.Title}
+       
+    if (person.Collab)
+         .boxOutline
+            button(type="button" class="collapsible boxOutlineBtn") Frequent collaborators 
+            .collapsibleContent
+                .listing
+                    if(person.Collab.length > 0)
+                        for famous in person.Collab
+                            li   
+                                a(href='../people/'+famous._id) #{famous.Name}
+                    else 
+                        p this person has no collaborators 
+script(src='../js/core.js')

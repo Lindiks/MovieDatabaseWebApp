@@ -1,0 +1,12 @@
+doctype html
+head
+    link(rel='stylesheet' href='css/style.css')
+    //- include partials/navHeader
+body
+
+h1 All People
+
+
+for person in people
+    li 
+        a(href='../people/'+person._id) #{person.Name}

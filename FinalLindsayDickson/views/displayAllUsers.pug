@@ -1,0 +1,12 @@
+doctype html
+head
+    link(rel='stylesheet' href='css/style.css')
+    //- include partials/navHeader
+body
+
+h1 All users
+
+
+for user in users
+    li 
+        a(href='../users/'+user._id) #{user.Username}

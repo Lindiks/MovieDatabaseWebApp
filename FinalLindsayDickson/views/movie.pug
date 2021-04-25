@@ -1,0 +1,126 @@
+doctype html
+head
+    link(rel='stylesheet' href='/css/movie.css')
+    link(rel='stylesheet' href='/css/test.css')
+    include partials/navHeader
+body
+
+#movieDisplay
+  if(movie.Poster)
+    #moviePoster
+      img#mPoster(src=movie.Poster alt=movie.Title)
+  .rectangle
+    #movieInfo
+      
+      h1#mTitle #{movie.Title}
+  
+      ul#movieTags.listInLine
+        li #{movie.Rated}
+        li #{movie.Runtime}
+        li #{movie.Year}
+        li#genreContainer
+            ul#genreTags
+                for gen in movie.Genre 
+                    li 
+                        a(href='http://localhost:3000/movies/search/?genre='+gen) #{gen}
+      p#mDescription #{movie.Plot}
+      
+      label Actors:
+      ul#actorList.listInLine 
+      
+        for actor in movie.Actor
+            li
+                a(href='../people/'+actor._id) #{actor.Name}
+
+      br
+      label Directors:
+      ul#directorList.listInLine
+        for director in movie.Director
+            li
+                a(href='../people/'+director._id) #{director.Name}
+
+      br
+      label Writers:
+      ul#writerList.listInLine
+        for writer in movie.Writer
+            li 
+                a(href='../people/'+writer._id) #{writer.Name}
+
+    // Places to display the movie’s title, release year, and runtime
+    // <ul id = "movieTags"></ul>
+  //- p #{movie.Reviews[0].Author}
+  br
+  br
+  br
+
+  .reviewSection
+
+    //- p #{star}*10
+    //- if(movie.Reviews.length > 0)
+    - var ratingResult = 0
+      ul
+        br
+        if(movie.Reviews.length > 0)
+          .scrollBox
+            for rating in movie.Reviews
+              //- p #{rating.Author}
+              li.reviewDisplay
+                  //- .reviewHead 
+                  h4.reviewHead
+                    | #{rating.Title}  - #{rating.Rating} / 10 
+                    //- | #{rating.Title}
+                    span(style="float:right; padding-right:15px")
+                      -for(let i = 0; i < rating.Rating; i++)
+                        | &star;
+                    br 
+                    a(href='../users/'+rating.Author._id)  -  #{rating.Author.Username}
+                  p #{rating.Comments}
+                  -ratingResult+=rating.Rating
+              br
+        else
+          .scrollBox(hidden)
+
+      br
+      - ratingResult = ratingResult/movie.Reviews.length
+
+    .stars
+      -for(let i = 0; i < ratingResult; i++)
+        | &star;
+      if(logged!=undefined)
+        if(logged==false)
+          -var btnFlag = "Add to Watchlist"
+        else 
+          -var btnFlag = "Remove from Watchlist"
+        button(type='button', id="watchState" onclick='UpdateWatchlist()') #{btnFlag} 
+    
+    if(logged!=undefined)
+      .makeReview
+        form(action="/reviews", method="POST")
+          .credBox
+            input#cReviewName(type='text', value='Title', name='title')
+            input#cReviewRating(type='number', min='1', max='10', value='5', name="rating")
+          //- input#cReviewText(type='text', value='Text review', name = "text")
+          br
+          textarea#cReviewText(name="text", cols="40", rows="5") 
+          br
+          button#submitReviewBtn(type='submit') Submit Review
+          input(type='text', value=movie._id, name="movie", hidden) 
+        //- send the movieId with the form
+
+  br
+  br
+  br
+  if(similar.length > 0)
+  #Recommended
+  .listing
+    h4 Similar Movies
+    for rec in similar
+      li.inLineElms 
+         .posterContainer
+            a(href='../movies/'+rec._id) 
+              img(src=rec.Poster, alt='Avatar', style="width:auto; height:200px")
+              .posterOverlay 
+                .posterText #{rec.Title}
+  //- a(href='../movies/'+rec._id) #{rec.Title}
+
+script(src='../js/core.js')

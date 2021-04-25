@@ -1,0 +1,257 @@
+*{
+    font-family: 'Courier New', monospace;
+}
+body{
+margin: 0;
+padding: 0;
+
+}
+
+li {
+  list-style: none;
+}
+
+.inLineElms{
+	display: inline-block;
+  
+}
+
+.listInLine li{
+  display: inline-block;
+}
+
+
+
+/* ____________________________________________________________________________________
+   NavHeader.pug
+*/
+
+
+#nav{
+	/* border-top: solid rgba(0, 0, 0, 0.178);
+	border-bottom: solid rgba(0, 0, 0, 0.178); */
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+}
+
+#navUl{
+	
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	/* Navigation background bar */
+  /* background-color: rgb(17, 21, 28);  */
+  
+  
+}
+
+#searchBar{
+	margin: 22%;
+	width: fit-content;
+	/* position: relative; */
+}
+
+#searchBtn{
+	margin-top:10px;
+	font-size: 16px;
+	letter-spacing: 2px;
+	border: none;
+	/* display: inline-flex; */
+    display: inline;
+ 	background-color: white;
+}
+#searchField{
+	width: 25%;
+	/* display: inline-flex; */
+    display: inline;
+}	
+
+a:link{
+	text-decoration: none;
+}
+
+a:visited{
+	color:initial;
+}
+
+/* li {
+	display: inline;
+} */
+
+.drop{
+    display: inline;
+    
+}
+
+
+li.dropdown{
+  float: left;
+}
+
+#userDrop{
+    float: right;
+
+}
+
+#userOptionsBtn{
+    
+    position: absolute;
+    right: 0%;
+    /* transform: translate(0, 0); */
+    /* transform: translateX(right); */
+    
+}
+
+.dropbtn{
+	border: none;
+	background-color: white;
+}
+
+/* li a, .dropbtn { */
+.dropbtn{
+  display: inline-block;
+  /* color: white; */
+  /* background-color: rgb(33, 45, 64);  */
+  /* background: linear-gradient(to center, red, yellow); */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  /* background-color: RGB(73, 88, 103); */
+  background-color: rgba(185, 185, 185, 0.664);
+}
+
+li.dropdown {
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; 
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+#userDropContent{
+    right: 0%;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  /* position:absolute; */
+  display: block;
+}
+
+
+/* ____________________________________________________________________________________
+   Login.pug
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ____________________________________________________________________________________
+   Misc
+*/
+
+
+.basicBtn{
+	margin-top:10px;
+	font-size: 12px;
+	letter-spacing: 2px;
+	border: none;
+	display: inline;
+ 	background-color: white;
+}
+
+
+
+
+body:hover, body:active, body:focus {
+  overflow-y: auto;
+}
+
+
+body::-webkit-scrollbar {
+width: 7px;
+height: 15px
+}
+body::-webkit-scrollbar-track {
+background: none;
+}
+body::-webkit-scrollbar-thumb {
+
+background-color: rgba(185, 185, 185, 0.281) ;
+border-radius: 6px;
+border: 1px solid  rgba(185, 185, 185, 0.2.81);
+}
+
+
+
+.posterContainer {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+  }
+  
+  .posterImage {
+	display: block;
+	width: 50%;
+	height: auto;
+  }
+  
+  .posterOverlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: auto;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color:rgba(185, 185, 185, 0.9);
+  }
+  
+  .posterContainer:hover .posterOverlay {
+	opacity: 1;
+  }
+  
+  .posterText {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+  }
+
+  

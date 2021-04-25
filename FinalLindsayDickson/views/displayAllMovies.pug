@@ -1,0 +1,12 @@
+doctype html
+head
+    link(rel='stylesheet' href='css/style.css')
+    //- include partials/navHeader
+body
+
+h1 All Movies
+
+
+for movie in movies
+    li 
+        a(href='../movies/'+movie._id) #{movie.Title}
